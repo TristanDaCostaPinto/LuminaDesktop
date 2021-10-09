@@ -1,0 +1,78 @@
+{
+    "name": "luminadesktop",
+    "version": "0.1.0",
+    "private": true,
+    "author": "Lumina",
+    "description": "Lumina Desktop Application",
+    "homepage": ".",
+    "main": "public/electron.js",
+    "dependencies": {
+        "@date-io/date-fns": "^1.3.13",
+        "@material-ui/core": "^4.12.3",
+        "@material-ui/icons": "^4.11.2",
+        "@material-ui/lab": "^4.0.0-alpha.60",
+        "@material-ui/pickers": "^3.3.10",
+        "@testing-library/jest-dom": "^5.14.1",
+        "@testing-library/react": "^12.1.0",
+        "@testing-library/user-event": "^13.2.1",
+        "axios": "^0.21.4",
+        "clsx": "^1.1.1",
+        "date-fns": "^2.23.0",
+        "electron-is-dev": "^2.0.0",
+        "formik": "^2.2.9",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "react-redux": "^7.2.5",
+        "react-router-dom": "^5.3.0",
+        "react-scripts": "4.0.3",
+        "redux-devtools-extension": "^2.13.9",
+        "redux-thunk": "^2.3.0",
+        "web-vitals": "^2.1.0",
+        "yup": "^0.32.9"
+    },
+    "scripts": {
+        "react-start": "react-scripts start",
+        "react-build": "react-scripts build",
+        "react-test": "react-scripts test --env=json",
+        "react-eject": "react-scripts eject",
+        "electron-build": "electron-builder",
+        "release": "npm run react-build && electron-builder --publish=always",
+        "build": "npm run react-build && npm run electron-build",
+        "start": "concurrently \"cross-env BROWSER=none npm run react-start\" \"wait-on http://localhost:3000 && electron .\"",
+        "preelectron-pack": "npm run build"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            "last 1 electron version"
+        ],
+        "development": [
+            "last 1 electron version"
+        ]
+    },
+    "devDependencies": {
+        "concurrently": "^6.2.2",
+        "cross-env": "^7.0.3",
+        "electron": "^14.0.1",
+        "electron-builder": "^22.11.7",
+        "electronmon": "^2.0.2",
+        "wait-on": "^6.0.0"
+    },
+    "build": {
+        "appId": "com.electron.luminadesktop",
+        "files": [
+            "dist/**/*",
+            "package.json",
+            "./public/electron.js",
+            "./build/**/*"
+        ],
+        "directories": {
+            "buildResources": "assets"
+        }
+    }
+}
